@@ -4,6 +4,7 @@ import java.util.*;
 class Player {
     byte age;
     String name;
+
     String club;
 }
 
