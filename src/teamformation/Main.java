@@ -2,17 +2,17 @@ package teamformation;
 
 import java.util.*;
 class Player {
-    byte age;
-    String name;
-    String club;
+    protected byte age;
+    protected String name;
+    protected String club;
 }
 
 class goalKeeper extends Player{
-    goalKeeper(boolean isTall){
+    goalKeeper(boolean isTall , String name , byte age , String club){
         this.isTall = isTall;
-        name = "hossam";
-        age = 0;
-        club = "AL AHLY";
+        this.name = name;
+        this.age = age;
+        this.club = club;
     }
     boolean isTall;
     void setTall(boolean isTall){
@@ -43,13 +43,13 @@ class goalKeeper extends Player{
 
 class Defender extends Player {
 
-    Defender(boolean isTall,boolean isFast,boolean isPhysical){
+    Defender(boolean isTall, boolean isFast, boolean isPhysical, String name, byte age, String club) {
         this.isTall = isTall;
         this.isFast = isFast;
         this.isPhysical = isPhysical;
-        name = "hossam";
-        age = 0;
-        club = "AL AHLY";
+        this.name = name;
+        this.age = age;
+        this.club = club;
     }
     private boolean isTall;
     private boolean isFast;
@@ -126,13 +126,13 @@ class Midfielders extends Player{
     enum Position {CDM, CAM, CM}
 
     private Position position;
-    Midfielders(boolean isDribbler,boolean isPasser,boolean isScanner){
-        this.isPasser = isPasser;
+    Midfielders(boolean isDribbler, boolean isPasser, boolean isScanner, String name, byte age, String club) {
         this.isDribbler = isDribbler;
+        this.isPasser = isPasser;
         this.isScanner = isScanner;
-        name = "hossam";
-        age = 0;
-        club = "AL AHLY";
+        this.name = name;
+        this.age = age;
+        this.club = club;
     }
 
     public boolean isPasser() {
@@ -195,21 +195,20 @@ class Midfielders extends Player{
 
 class Striker extends Player{
 
-    private static byte countPlayers;
 
     private boolean isFinisher;
     private boolean isHeader;
     private boolean isDribbler;
     private boolean isFast;
 
-    Striker(boolean isFinisher,boolean isFast,boolean isHeader,boolean isDribbler){
+    Striker(boolean isFinisher, boolean isFast, boolean isHeader, boolean isDribbler, String name, byte age, String club) {
         this.isFinisher = isFinisher;
         this.isFast = isFast;
         this.isHeader = isHeader;
         this.isDribbler = isDribbler;
-        name = "hossam";
-        age = 0;
-        club = "AL AHLY";
+        this.name = name;
+        this.age = age;
+        this.club = club;
     }
 
     enum Position {LW, RW, CF}
@@ -280,366 +279,182 @@ class Striker extends Player{
 
 public class Main {
 
-    void GK_data(goalKeeper[] goalKeepers){
-        goalKeepers[0] = new goalKeeper(true);
-        goalKeepers[0].name = "Alisson";
-        goalKeepers[0].age = 32;
-        goalKeepers[0].club = "Liverpool";
-
-        goalKeepers[1] = new goalKeeper(true);
-        goalKeepers[1].name = "Ederson";
-        goalKeepers[1].age = 31;
-        goalKeepers[1].club = "Manchester City";
-
-        goalKeepers[2] = new goalKeeper(true);
-        goalKeepers[2].name = "Courtois";
-        goalKeepers[2].age = 33;
-        goalKeepers[2].club = "Real Madrid";
-
-        goalKeepers[3] = new goalKeeper(true);
-        goalKeepers[3].name = "Donnarumma";
-        goalKeepers[3].age = 26;
-        goalKeepers[3].club = "PSG";
-
-        goalKeepers[4] = new goalKeeper(true);
-        goalKeepers[4].name = "Ter Stegen";
-        goalKeepers[4].age = 33;
-        goalKeepers[4].club = "Barcelona";
-
-        goalKeepers[5] = new goalKeeper(true);
-        goalKeepers[5].name = "Maignan";
-        goalKeepers[5].age = 30;
-        goalKeepers[5].club = "AC Milan";
-
-        goalKeepers[6] = new goalKeeper(true);
-        goalKeepers[6].name = "Emiliano Martinez";
-        goalKeepers[6].age = 33;
-        goalKeepers[6].club = "Aston Villa";
-
-        goalKeepers[7] = new goalKeeper(true);
-        goalKeepers[7].name = "Neuer";
-        goalKeepers[7].age = 40;
-        goalKeepers[7].club = "Bayern Munich";
-
-        goalKeepers[8] = new goalKeeper(true);
-        goalKeepers[8].name = "Diogo Costa";
-        goalKeepers[8].age = 27;
-        goalKeepers[8].club = "Porto";
-
-        goalKeepers[9] = new goalKeeper(true);
-        goalKeepers[9].name = "Onana";
-        goalKeepers[9].age = 30;
-        goalKeepers[9].club = "Manchester United";
+    void GK_data(goalKeeper[] goalKeepers) {
+        goalKeepers[0] = new goalKeeper(true, "Alisson", (byte)32, "Liverpool");
+        goalKeepers[1] = new goalKeeper(true, "Ederson", (byte)31, "Manchester City");
+        goalKeepers[2] = new goalKeeper(true, "Courtois", (byte)33, "Real Madrid");
+        goalKeepers[3] = new goalKeeper(true, "Donnarumma", (byte)26, "PSG");
+        goalKeepers[4] = new goalKeeper(true, "Ter Stegen", (byte)33, "Barcelona");
+        goalKeepers[5] = new goalKeeper(true, "Maignan", (byte)30, "AC Milan");
+        goalKeepers[6] = new goalKeeper(true, "Emiliano Martinez", (byte)33, "Aston Villa");
+        goalKeepers[7] = new goalKeeper(true, "Neuer", (byte)40, "Bayern Munich");
+        goalKeepers[8] = new goalKeeper(true, "Diogo Costa", (byte)27, "Porto");
+        goalKeepers[9] = new goalKeeper(true, "Onana", (byte)30, "Manchester United");
     }
-    void center_data(Defender[] defenders){
-        defenders[0] = new Defender(true,true,true);
+    void center_data(Defender[] defenders) {
+
+        // CB
+        defenders[0] = new Defender(true, true, true, "Van Dijk", (byte)34, "Liverpool");
         defenders[0].setPosition(Defender.Position.CB);
-        defenders[0].name = "Van Dijk";
-        defenders[0].age = 34;
-        defenders[0].club = "Liverpool";
 
-        defenders[1] = new Defender(true,true,true);
+        defenders[1] = new Defender(true, true, true, "Rudiger", (byte)32, "Real Madrid");
         defenders[1].setPosition(Defender.Position.CB);
-        defenders[1].name = "Rudiger";
-        defenders[1].age = 32;
-        defenders[1].club = "Real Madrid";
 
-        defenders[2] = new Defender(true,true,true);
+        defenders[2] = new Defender(true, true, true, "Saliba", (byte)24, "Arsenal");
         defenders[2].setPosition(Defender.Position.CB);
-        defenders[2].name = "Saliba";
-        defenders[2].age = 24;
-        defenders[2].club = "Arsenal";
 
-        defenders[3] = new Defender(true,true,true);
+        defenders[3] = new Defender(true, true, true, "Bastoni", (byte)26, "Inter Milan");
         defenders[3].setPosition(Defender.Position.CB);
-        defenders[3].name = "Bastoni";
-        defenders[3].age = 26;
-        defenders[3].club = "Inter Milan";
 
-        defenders[4] = new Defender(true,true,true);
+        defenders[4] = new Defender(true, true, true, "Araujo", (byte)26, "Barcelona");
         defenders[4].setPosition(Defender.Position.CB);
-        defenders[4].name = "Araujo";
-        defenders[4].age = 26;
-        defenders[4].club = "Barcelona";
 
-// LB
-        defenders[5] = new Defender(false,true,false);
+        // LB
+        defenders[5] = new Defender(false, true, false, "Alphonso Davies", (byte)24, "Bayern Munich");
         defenders[5].setPosition(Defender.Position.LB);
-        defenders[5].name = "Alphonso Davies";
-        defenders[5].age = 24;
-        defenders[5].club = "Bayern Munich";
 
-        defenders[6] = new Defender(false,true,false);
+        defenders[6] = new Defender(false, true, false, "Theo Hernandez", (byte)27, "AC Milan");
         defenders[6].setPosition(Defender.Position.LB);
-        defenders[6].name = "Theo Hernandez";
-        defenders[6].age = 27;
-        defenders[6].club = "AC Milan";
 
-        defenders[7] = new Defender(false,true,false);
+        defenders[7] = new Defender(false, true, false, "Grimaldo", (byte)29, "Leverkusen");
         defenders[7].setPosition(Defender.Position.LB);
-        defenders[7].name = "Grimaldo";
-        defenders[7].age = 29;
-        defenders[7].club = "Leverkusen";
 
-        defenders[8] = new Defender(false,true,false);
+        defenders[8] = new Defender(false, true, false, "Nuno Mendes", (byte)23, "PSG");
         defenders[8].setPosition(Defender.Position.LB);
-        defenders[8].name = "Nuno Mendes";
-        defenders[8].age = 23;
-        defenders[8].club = "PSG";
 
         // RB
-        defenders[9] = new Defender(false,true,false);
+        defenders[9] = new Defender(false, true, false, "Hakimi", (byte)26, "PSG");
         defenders[9].setPosition(Defender.Position.RB);
-        defenders[9].name = "Hakimi";
-        defenders[9].age = 26;
-        defenders[9].club = "PSG";
 
-        defenders[10] = new Defender(false,true,false);
+        defenders[10] = new Defender(false, true, false, "Trent", (byte)27, "Liverpool");
         defenders[10].setPosition(Defender.Position.RB);
-        defenders[10].name = "Trent";
-        defenders[10].age = 27;
-        defenders[10].club = "Liverpool";
 
-        defenders[11] = new Defender(false,true,false);
+        defenders[11] = new Defender(false, true, false, "Frimpong", (byte)25, "Liverpool");
         defenders[11].setPosition(Defender.Position.RB);
-        defenders[11].name = "Frimpong";
-        defenders[11].age = 25;
-        defenders[11].club = "Liverpool";
 
-        defenders[12] = new Defender(false,true,false);
+        defenders[12] = new Defender(false, true, false, "Reece James", (byte)26, "Chelsea");
         defenders[12].setPosition(Defender.Position.RB);
-        defenders[12].name = "Reece James";
-        defenders[12].age = 26;
-        defenders[12].club = "Chelsea";
 
-        defenders[13] = new Defender(false,true,false);
+        defenders[13] = new Defender(false, true, false, "Kounde", (byte)27, "Barcelona");
         defenders[13].setPosition(Defender.Position.RB);
-        defenders[13].name = "Kounde";
-        defenders[13].age = 27;
-        defenders[13].club = "Barcelona";
 
-        defenders[14] = new Defender(false,true,false);
+        defenders[14] = new Defender(false, true, false, "Walker", (byte)35, "Burnley");
         defenders[14].setPosition(Defender.Position.RB);
-        defenders[14].name = "Walker";
-        defenders[14].age = 35;
-        defenders[14].club = "Burnley";
     }
-    void mid(Midfielders[] midfielders){
-// CDM
-        midfielders[0] = new Midfielders(false,true,true);
+    void mid(Midfielders[] midfielders) {
+
+        // CDM
+        midfielders[0] = new Midfielders(false, true, true, "Rodri", (byte)29, "Manchester City");
         midfielders[0].setPosition(Midfielders.Position.CDM);
-        midfielders[0].name = "Rodri";
-        midfielders[0].age = 29;
-        midfielders[0].club = "Manchester City";
 
-        midfielders[1] = new Midfielders(false,true,true);
+        midfielders[1] = new Midfielders(false, true, true, "Rice", (byte)26, "Arsenal");
         midfielders[1].setPosition(Midfielders.Position.CDM);
-        midfielders[1].name = "Rice";
-        midfielders[1].age = 26;
-        midfielders[1].club = "Arsenal";
 
-        midfielders[2] = new Midfielders(false,true,true);
+        midfielders[2] = new Midfielders(false, true, true, "Tchouameni", (byte)25, "Real Madrid");
         midfielders[2].setPosition(Midfielders.Position.CDM);
-        midfielders[2].name = "Tchouameni";
-        midfielders[2].age = 25;
-        midfielders[2].club = "Real Madrid";
 
-        midfielders[3] = new Midfielders(false,true,true);
+        midfielders[3] = new Midfielders(false, true, true, "Kimmich", (byte)31, "Bayern Munich");
         midfielders[3].setPosition(Midfielders.Position.CDM);
-        midfielders[3].name = "Kimmich";
-        midfielders[3].age = 31;
-        midfielders[3].club = "Bayern Munich";
 
-        midfielders[4] = new Midfielders(false,true,true);
+        midfielders[4] = new Midfielders(false, true, true, "Zubimendi", (byte)27, "Real Sociedad");
         midfielders[4].setPosition(Midfielders.Position.CDM);
-        midfielders[4].name = "Zubimendi";
-        midfielders[4].age = 27;
-        midfielders[4].club = "Real Sociedad";
 
-// CM
-        midfielders[5] = new Midfielders(true,true,true);
+        // CM
+        midfielders[5] = new Midfielders(true, true, true, "Pedri", (byte)23, "Barcelona");
         midfielders[5].setPosition(Midfielders.Position.CM);
-        midfielders[5].name = "Pedri";
-        midfielders[5].age = 23;
-        midfielders[5].club = "Barcelona";
 
-        midfielders[6] = new Midfielders(true,true,true);
+        midfielders[6] = new Midfielders(true, true, true, "Valverde", (byte)27, "Real Madrid");
         midfielders[6].setPosition(Midfielders.Position.CM);
-        midfielders[6].name = "Valverde";
-        midfielders[6].age = 27;
-        midfielders[6].club = "Real Madrid";
 
-        midfielders[7] = new Midfielders(true,true,true);
+        midfielders[7] = new Midfielders(true, true, true, "Mac Allister", (byte)27, "Liverpool");
         midfielders[7].setPosition(Midfielders.Position.CM);
-        midfielders[7].name = "Mac Allister";
-        midfielders[7].age = 27;
-        midfielders[7].club = "Liverpool";
 
-        midfielders[8] = new Midfielders(true,true,true);
+        midfielders[8] = new Midfielders(true, true, true, "Vitinha", (byte)26, "PSG");
         midfielders[8].setPosition(Midfielders.Position.CM);
-        midfielders[8].name = "Vitinha";
-        midfielders[8].age = 26;
-        midfielders[8].club = "PSG";
 
-        midfielders[9] = new Midfielders(true,true,true);
+        midfielders[9] = new Midfielders(true, true, true, "Musiala", (byte)23, "Bayern Munich");
         midfielders[9].setPosition(Midfielders.Position.CM);
-        midfielders[9].name = "Musiala";
-        midfielders[9].age = 23;
-        midfielders[9].club = "Bayern Munich";
 
-        midfielders[10] = new Midfielders(true,true,true);
+        midfielders[10] = new Midfielders(true, true, true, "Enzo Fernandez", (byte)25, "Chelsea");
         midfielders[10].setPosition(Midfielders.Position.CM);
-        midfielders[10].name = "Enzo Fernandez";
-        midfielders[10].age = 25;
-        midfielders[10].club = "Chelsea";
 
-        midfielders[11] = new Midfielders(true,true,true);
+        midfielders[11] = new Midfielders(true, true, true, "Gavi", (byte)22, "Barcelona");
         midfielders[11].setPosition(Midfielders.Position.CM);
-        midfielders[11].name = "Gavi";
-        midfielders[11].age = 22;
-        midfielders[11].club = "Barcelona";
 
-// CAM
-        midfielders[12] = new Midfielders(true,true,true);
+        // CAM
+        midfielders[12] = new Midfielders(true, true, true, "Bellingham", (byte)22, "Real Madrid");
         midfielders[12].setPosition(Midfielders.Position.CAM);
-        midfielders[12].name = "Bellingham";
-        midfielders[12].age = 22;
-        midfielders[12].club = "Real Madrid";
 
-        midfielders[13] = new Midfielders(true,true,true);
+        midfielders[13] = new Midfielders(true, true, true, "Wirtz", (byte)23, "Liverpool");
         midfielders[13].setPosition(Midfielders.Position.CAM);
-        midfielders[13].name = "Wirtz";
-        midfielders[13].age = 23;
-        midfielders[13].club = "Liverpool";
 
-        midfielders[14] = new Midfielders(true,true,true);
+        midfielders[14] = new Midfielders(true, true, true, "De Bruyne", (byte)35, "Napoli");
         midfielders[14].setPosition(Midfielders.Position.CAM);
-        midfielders[14].name = "De Bruyne";
-        midfielders[14].age = 35;
-        midfielders[14].club = "Napoli";
 
-        midfielders[15] = new Midfielders(true,true,true);
+        midfielders[15] = new Midfielders(true, true, true, "Bruno Fernandes", (byte)31, "Manchester United");
         midfielders[15].setPosition(Midfielders.Position.CAM);
-        midfielders[15].name = "Bruno Fernandes";
-        midfielders[15].age = 31;
-        midfielders[15].club = "Manchester United";
 
-        midfielders[16] = new Midfielders(true,true,true);
+        midfielders[16] = new Midfielders(true, true, true, "Odegaard", (byte)27, "Arsenal");
         midfielders[16].setPosition(Midfielders.Position.CAM);
-        midfielders[16].name = "Odegaard";
-        midfielders[16].age = 27;
-        midfielders[16].club = "Arsenal";
 
-        midfielders[17] = new Midfielders(true,true,true);
+        midfielders[17] = new Midfielders(true, true, true, "Maddison", (byte)30, "Tottenham");
         midfielders[17].setPosition(Midfielders.Position.CAM);
-        midfielders[17].name = "Maddison";
-        midfielders[17].age = 30;
-        midfielders[17].club = "Tottenham";
 
-        midfielders[18] = new Midfielders(true,true,true);
+        midfielders[18] = new Midfielders(true, true, true, "Olmo", (byte)28, "Barcelona");
         midfielders[18].setPosition(Midfielders.Position.CAM);
-        midfielders[18].name = "Olmo";
-        midfielders[18].age = 28;
-        midfielders[18].club = "Barcelona";
 
-        midfielders[19] = new Midfielders(true,true,true);
+        midfielders[19] = new Midfielders(true, true, true, "Palmer", (byte)24, "Chelsea");
         midfielders[19].setPosition(Midfielders.Position.CAM);
-        midfielders[19].name = "Palmer";
-        midfielders[19].age = 24;
-        midfielders[19].club = "Chelsea";
     }
-    void attack(Striker[] strikers){
-        strikers[0] = new Striker(true,true,true,false);
+    void attack(Striker[] strikers) {
+
+        // CF
+        strikers[0] = new Striker(true, true, true, false, "Haaland", (byte)25, "Manchester City");
         strikers[0].setPosition(Striker.Position.CF);
-        strikers[0].name = "Haaland";
-        strikers[0].age = 25;
-        strikers[0].club = "Manchester City";
 
-        strikers[1] = new Striker(true,false,true,false);
+        strikers[1] = new Striker(true, false, true, false, "Harry Kane", (byte)32, "Bayern Munich");
         strikers[1].setPosition(Striker.Position.CF);
-        strikers[1].name = "Harry Kane";
-        strikers[1].age = 32;
-        strikers[1].club = "Bayern Munich";
 
-        strikers[2] = new Striker(true,true,false,true);
+        strikers[2] = new Striker(true, true, false, true, "Lautaro Martinez", (byte)29, "Inter Milan");
         strikers[2].setPosition(Striker.Position.CF);
-        strikers[2].name = "Lautaro Martinez";
-        strikers[2].age = 29;
-        strikers[2].club = "Inter Milan";
 
-        strikers[3] = new Striker(true,true,false,true);
+        strikers[3] = new Striker(true, true, false, true, "Julian Alvarez", (byte)26, "Atletico Madrid");
         strikers[3].setPosition(Striker.Position.CF);
-        strikers[3].name = "Julian Alvarez";
-        strikers[3].age = 26;
-        strikers[3].club = "Atletico Madrid";
 
-        strikers[4] = new Striker(true,true,true,true);
+        strikers[4] = new Striker(true, true, true, true, "Osimhen", (byte)27, "Galatasaray");
         strikers[4].setPosition(Striker.Position.CF);
-        strikers[4].name = "Osimhen";
-        strikers[4].age = 27;
-        strikers[4].club = "Galatasaray";
 
-// LW
-        strikers[5] = new Striker(true,true,false,true);
+        // LW
+        strikers[5] = new Striker(true, true, false, true, "Vinicius Jr", (byte)25, "Real Madrid");
         strikers[5].setPosition(Striker.Position.LW);
-        strikers[5].name = "Vinicius Jr";
-        strikers[5].age = 25;
-        strikers[5].club = "Real Madrid";
 
-        strikers[6] = new Striker(true,true,false,true);
+        strikers[6] = new Striker(true, true, false, true, "Leao", (byte)26, "AC Milan");
         strikers[6].setPosition(Striker.Position.LW);
-        strikers[6].name = "Leao";
-        strikers[6].age = 26;
-        strikers[6].club = "AC Milan";
 
-        strikers[7] = new Striker(true,true,false,true);
+        strikers[7] = new Striker(true, true, false, true, "Kvaratskhelia", (byte)24, "PSG");
         strikers[7].setPosition(Striker.Position.LW);
-        strikers[7].name = "Kvaratskhelia";
-        strikers[7].age = 24;
-        strikers[7].club = "PSG";
 
-        strikers[8] = new Striker(true,true,false,true);
+        strikers[8] = new Striker(true, true, false, true, "Son", (byte)33, "Tottenham");
         strikers[8].setPosition(Striker.Position.LW);
-        strikers[8].name = "Son";
-        strikers[8].age = 33;
-        strikers[8].club = "Tottenham";
 
-        strikers[9] = new Striker(true,true,false,true);
+        strikers[9] = new Striker(true, true, false, true, "Nico Williams", (byte)23, "Athletic Bilbao");
         strikers[9].setPosition(Striker.Position.LW);
-        strikers[9].name = "Nico Williams";
-        strikers[9].age = 23;
-        strikers[9].club = "Athletic Bilbao";
 
-// RW
-        strikers[10] = new Striker(true,true,false,true);
+        // RW
+        strikers[10] = new Striker(true, true, false, true, "Salah", (byte)34, "Liverpool");
         strikers[10].setPosition(Striker.Position.RW);
-        strikers[10].name = "Salah";
-        strikers[10].age = 34;
-        strikers[10].club = "Liverpool";
 
-        strikers[11] = new Striker(true,true,false,true);
+        strikers[11] = new Striker(true, true, false, true, "Yamal", (byte)18, "Barcelona");
         strikers[11].setPosition(Striker.Position.RW);
-        strikers[11].name = "Yamal";
-        strikers[11].age = 18;
-        strikers[11].club = "Barcelona";
 
-        strikers[12] = new Striker(true,true,false,true);
+        strikers[12] = new Striker(true, true, false, true, "Saka", (byte)24, "Arsenal");
         strikers[12].setPosition(Striker.Position.RW);
-        strikers[12].name = "Saka";
-        strikers[12].age = 24;
-        strikers[12].club = "Arsenal";
 
-        strikers[13] = new Striker(true,true,false,true);
+        strikers[13] = new Striker(true, true, false, true, "Dembele", (byte)29, "PSG");
         strikers[13].setPosition(Striker.Position.RW);
-        strikers[13].name = "Dembele";
-        strikers[13].age = 29;
-        strikers[13].club = "PSG";
 
-        strikers[14] = new Striker(true,true,false,true);
+        strikers[14] = new Striker(true, true, false, true, "Rodrygo", (byte)25, "Real Madrid");
         strikers[14].setPosition(Striker.Position.RW);
-        strikers[14].name = "Rodrygo";
-        strikers[14].age = 25;
-        strikers[14].club = "Real Madrid";
     }
 
     public static void main(String[] args) {
@@ -804,6 +619,5 @@ public class Main {
                 System.out.print(CF.get(i).name + "         ");
             }
         }
-
     }
 }
