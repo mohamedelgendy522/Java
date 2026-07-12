@@ -4,7 +4,6 @@ import java.util.*;
 class Player {
     byte age;
     String name;
-
     String club;
 }
 
@@ -23,13 +22,22 @@ class goalKeeper extends Player{
         return isTall;
     }
     public static void Print(goalKeeper[] goalKeepers) {
-        for (int i = 0; i < goalKeepers.length; i++) {
-            System.out.println( i + ". "+"teamformation.Player Name : " + goalKeepers[i].name + " teamformation.Player club : " + goalKeepers[i].club + " teamformation.Player age : " + goalKeepers[i].age);
-        }
-    }
 
-    public void print_player_details(goalKeeper goalKeeper) {
-        System.out.println("isTall : " + goalKeeper.isTall);
+        System.out.println("\n========== Goalkeepers ==========\n");
+
+        for (int i = 0; i < goalKeepers.length; i++) {
+
+            System.out.println("Player #" + (i));
+            System.out.println("--------------------------------");
+            System.out.println("Name      : " + goalKeepers[i].name);
+            System.out.println("Club      : " + goalKeepers[i].club);
+            System.out.println("Age       : " + goalKeepers[i].age);
+
+            System.out.println("Skills");
+            System.out.println("Tall      : " + (goalKeepers[i].getTall() ? "✔" : "✘"));
+
+            System.out.println("--------------------------------\n");
+        }
     }
 }
 
@@ -84,17 +92,29 @@ class Defender extends Player {
     }
 
     public static void Print(Defender[] defenders, String pos) {
+
+        System.out.println("\n========== Defenders ==========\n");
+
         for (int i = 0; i < defenders.length; i++) {
-            if (defenders[i].position.toString().equals(pos)) {
-                System.out.println( i + ". "+"teamformation.Player Name : " + defenders[i].name + " teamformation.Player club : " + defenders[i].club + " teamformation.Player age : " + defenders[i].age);
+
+            if (defenders[i].getPosition().toString().equalsIgnoreCase(pos)) {
+
+                System.out.println("Player #" + (i));
+                System.out.println("--------------------------------");
+                System.out.println("Name      : " + defenders[i].name);
+                System.out.println("Club      : " + defenders[i].club);
+                System.out.println("Age       : " + defenders[i].age);
+                System.out.println("Position  : " + defenders[i].getPosition());
+
+                System.out.println("Skills");
+                System.out.println("Tall      : " + (defenders[i].isTall() ? "✔" : "✘"));
+                System.out.println("Fast      : " + (defenders[i].isFast() ? "✔" : "✘"));
+                System.out.println("Physical  : " + (defenders[i].isPhysical() ? "✔" : "✘"));
+
+                System.out.println("--------------------------------\n");
             }
         }
     }
-
-    public void print_player_details(Defender defender) {
-        System.out.println("isTall : " + defender.isTall + " isFast : " + defender.isFast + " isPhysical : " + defender.isPhysical);
-    }
-
 }
 
 class Midfielders extends Player{
@@ -148,15 +168,28 @@ class Midfielders extends Player{
     }
 
     public static void Print(Midfielders[] midfielders, String pos) {
+
+        System.out.println("\n========== Midfielders ==========\n");
+
         for (int i = 0; i < midfielders.length; i++) {
-            if (midfielders[i].position.toString().equals(pos)) {
-                System.out.println( i + ". "+"teamformation.Player Name : " + midfielders[i].name + " teamformation.Player club : " + midfielders[i].club + " teamformation.Player age : " + midfielders[i].age);
+
+            if (midfielders[i].getPosition().toString().equalsIgnoreCase(pos)) {
+
+                System.out.println("Player #" + (i));
+                System.out.println("--------------------------------");
+                System.out.println("Name     : " + midfielders[i].name);
+                System.out.println("Club     : " + midfielders[i].club);
+                System.out.println("Age      : " + midfielders[i].age);
+                System.out.println("Position : " + midfielders[i].getPosition());
+
+                System.out.println("Skills");
+                System.out.println("Passer    : " + (midfielders[i].isPasser() ? "✔" : "✘"));
+                System.out.println("Scanner   : " + (midfielders[i].isScanner() ? "✔" : "✘"));
+                System.out.println("Dribbler  : " + (midfielders[i].isDribbler() ? "✔" : "✘"));
+
+                System.out.println("--------------------------------\n");
             }
         }
-    }
-
-    public void print_player_details(Midfielders midfielder) {
-        System.out.println("isPasser : " + midfielder.isPasser + " isScanner : " + midfielder.isScanner + " isDribbler : " + midfielder.isDribbler);
     }
 }
 
@@ -224,14 +257,23 @@ class Striker extends Player{
     }
 
     public static void Print(Striker[] strikers , String pos){
-        for (int i = 0 ; i < strikers.length ; i++){
-            if(strikers[i].position.toString().equals(pos))
-            System.out.println( i + ". " + " teamformation.Player Name : " + strikers[i].name + " teamformation.Player club : " + strikers[i].club + " teamformation.Player age : " + strikers[i].age);
+        for (int i = 0; i < strikers.length; i++) {
+            if (strikers[i].position.toString().equals(pos)) {
+                System.out.println("Player #" + (i));
+                System.out.println("---------------------------------------");
+                System.out.println("Name      : " + strikers[i].name);
+                System.out.println("Club      : " + strikers[i].club);
+                System.out.println("Age       : " + strikers[i].age);
+                System.out.println("Position  : " + strikers[i].position);
+                System.out.println();
+                System.out.println("Attributes");
+                System.out.println("  Header    : " + (strikers[i].isHeader ? "✔" : "✘"));
+                System.out.println("  Dribbler  : " + (strikers[i].isDribbler ? "✔" : "✘"));
+                System.out.println("  Finisher  : " + (strikers[i].isFinisher ? "✔" : "✘"));
+                System.out.println("  Fast      : " + (strikers[i].isFast ? "✔" : "✘"));
+                System.out.println("---------------------------------------\n");
+            }
         }
-    }
-
-    public void print_player_details(Striker striker){
-        System.out.println("isHeader : " + striker.isHeader + " isDribbler : " + striker.isDribbler + " isFinisher : " + striker.isFinisher + " isFast : " + striker.isFast);
     }
 
 }
@@ -671,6 +713,7 @@ public class Main {
             System.out.println("Choose your left winger" + "\n" + "Left wingers");
             Striker.Print(strikers,"LW");
             chooseLw = sc.nextByte();
+
             CF.add(strikers[chooseLw]);
 
             // Cf
