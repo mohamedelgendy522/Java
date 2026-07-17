@@ -467,13 +467,12 @@ public class Main {
         goalKeeper[] goalKeepers = new goalKeeper[10];
         Defender[] defenders = new Defender[15];
         Midfielders[] midfielders = new Midfielders[20];
-        Striker[] strikers = new Striker[15];
-
-        // load data
         mn.GK_data(goalKeepers);
         mn.mid(midfielders);
         mn.center_data(defenders);
         mn.attack(strikers);
+        center_data(defenders);
+        attack(strikers);
 
         // 11 - teamformation.Main Players
         ArrayList<goalKeeper> gK = new ArrayList<>();
@@ -616,8 +615,6 @@ public class Main {
 
             // print center midfielders
             for(int i = 0 ; i < 3 ; i++){
-                System.out.print(CF.get(i).name + "         ");
-            }
-        }
+        runTeamFormationFlow(sc);
     }
 }

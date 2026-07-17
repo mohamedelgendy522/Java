@@ -22,7 +22,6 @@ public class Main {
                 if (enterPin.equals(newPin)) {
                     System.out.println("successfully logged in");
                     isLogin = true;
-                    break;
                 } else {
                     System.out.println("Your Pin is Wrong");
                 }
@@ -30,14 +29,14 @@ public class Main {
             } while (!isLogin && steps < 3);
 
             if (isLogin) {
-                double currentBalance = 2500;
+                double currentBalance = 5000;
                 byte successfulTransactions = 0;
                 boolean usingApp = true;
                 while (usingApp) {
-                    System.out.println("============== ATM ==============");
+                    System.out.println("============== BANK ==============");
                     System.out.println("1. Check Balance" + "\n" + "2. Deposit" + "\n" +
                             "3. Withdraw" + "\n" +
-                            "4. Show Account Status" + "\n" + "5. Exit");
+                            "4. Transfer" + "\n" + "5. Exit");
                     byte chooseYourStep;
                     chooseYourStep = sc.nextByte();
                     switch (chooseYourStep) {
@@ -77,12 +76,24 @@ public class Main {
                             }
                             break;
                         case 4:
-                            if (currentBalance >= 5000) {
-                                System.out.println("VIP Customer");
-                            } else if (currentBalance >= 1000 && currentBalance < 5000) {
-                                System.out.println("Regular Customer");
+                            double transfer;
+                            String useraccount;
+                            System.out.print("Please enter the transfer amount: ");
+                            transfer = sc.nextDouble();
+                            sc.nextLine();
+                            System.out.println("Enter useraccount u want to transfer to him");
+                            useraccount = sc.nextLine();
+                            if (transfer == 0) {
+                                System.out.println("Transaction cancelled.");
+                            } else if (transfer <= currentBalance && transfer > 0) {
+                                successfulTransactions++;
+                                currentBalance -= transfer;
+                                if (currentBalance == 0) {
+                                    System.out.println("Warning: Your account is empty.");
+                                }
+                                System.out.println("Your Current Balance : " + currentBalance);
                             } else {
-                                System.out.println("Low Balance");
+                                System.out.println("Insufficient balance.");
                             }
                             break;
                         case 5:
@@ -95,8 +106,6 @@ public class Main {
                     }
                 }
             } else {
-                System.out.println("Maximum PIN attempts reached. Access denied.");
-            }
-        }
+        runAtmWorkflow(sc);
     }
 }
