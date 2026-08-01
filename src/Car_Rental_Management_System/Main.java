@@ -12,11 +12,12 @@ public class Main {
         while (true) {
             System.out.print("Enter a unique car ID: ");
             int id = sc.nextInt();
+            sc.nextLine();
 
             if (Car.isUniqueId(cars, id)) {
                 return id;
             } else {
-                System.out.println("This ID is already in use. Please enter a different ID.");
+                System.out.println("This ID is already in use. Please enter a different ID");
             }
         }
     }
@@ -25,11 +26,12 @@ public class Main {
         while (true) {
             System.out.print("Enter a unique Customer ID: ");
             int id = sc.nextInt();
+            sc.nextLine();
 
             if (Customer.isUniqueId(customers, id)) {
                 return id;
             } else {
-                System.out.println("This ID is already in use. Please enter a different ID.");
+                System.out.println("This ID is already in use. Please enter a different ID");
             }
         }
     }
@@ -42,7 +44,7 @@ public class Main {
             if (year >= 1990 && year <= 2026) {
                 return year;
             } else {
-                System.out.println("Invalid year. Please enter a year between 1990 and 2026.");
+                System.out.println("Invalid year. Please enter a year between 1990 and 2026");
             }
         }
     }
@@ -55,7 +57,7 @@ public class Main {
             if (price > 0) {
                 return price;
             } else {
-                System.out.println("Invalid price. Please enter a value greater than 0.");
+                System.out.println("Invalid price. Please enter a value greater than 0");
             }
         }
     }
@@ -68,7 +70,7 @@ public class Main {
             if (insuranceFees >= 0) {
                 return insuranceFees;
             } else {
-                System.out.println("Invalid insurance fees. Please try again.");
+                System.out.println("Invalid insurance fees. Please try again");
             }
         }
     }
@@ -87,7 +89,7 @@ public class Main {
 
     static void addRegularCar(Car[] cars, Scanner sc) {
         if (Car.getCount() == maxCars) {
-            System.out.println("Cannot add more cars. The garage is full.");
+            System.out.println("Cannot add more cars. The garage is full");
             return;
         }
 
@@ -111,7 +113,7 @@ public class Main {
 
     static void addLuxuryCar(Car[] cars,Scanner sc){
         if (Car.getCount() == maxCars) {
-            System.out.println("Cannot add more cars. The garage is full.");
+            System.out.println("Cannot add more cars. The garage is full");
             return;
         }
 
@@ -137,7 +139,7 @@ public class Main {
 
     static void addCustomer(Customer[] customers , Scanner sc){
         if(Customer.getCount() == maxCustomers){
-            System.out.println("Cannot add more Customers.");
+            System.out.println("Cannot add more Customers");
             return;
         }
 
@@ -162,12 +164,12 @@ public class Main {
         Customer customer = Customer.getCustomer(customers, customerId);
 
         if (customer == null) {
-            System.out.println("Customer not found.");
+            System.out.println("Customer not found");
             return;
         }
 
         if (customer.getRentedCarId() == -1) {
-            System.out.println("This customer didn't rent any car.");
+            System.out.println("This customer didn't rent any car");
             return;
         }
 
@@ -180,7 +182,7 @@ public class Main {
             car.setAvailable(true);
             System.out.println("Car returned successfully: " + car.getBrand() + " " + car.getModel());
         } else {
-            System.out.println("Car returned successfully.");
+            System.out.println("Car returned successfully");
         }
     }
 
@@ -256,15 +258,12 @@ public class Main {
 
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         Car[] cars = new Car[maxCars];
         Customer[] customers = new Customer[maxCustomers];
 
-
         int choice;
         boolean running = true;
-
 
         while (running) {
 
@@ -286,6 +285,7 @@ public class Main {
 
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
+            sc.nextLine();
 
             switch (choice) {
 
@@ -334,6 +334,9 @@ public class Main {
                     Car.displayStatistics(cars);
                     break;
                 case 0:
+                    System.out.println("Total Cars      : " + Car.getCount());
+                    System.out.println("Total Customers : " + Customer.getCount());
+                    System.out.println("Total Income    : " + officeIncome);
                     System.out.println("\nThank you for using Speedway Rentals System!");
                     running = false;
                     break;
