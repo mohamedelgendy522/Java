@@ -3,18 +3,17 @@ package ATM_Machine_Simulation;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         byte steps = 0;
 
         System.out.println(" Enter 4 digits For newPin ");
-        String newPin,enterPin;
+        String newPin, enterPin;
         boolean isLogin = false;
         newPin = sc.next();
-        if(newPin.length() != 4){
+        if (newPin.length() != 4) {
             System.out.println("Your Password must be 4 digits");
-        }
-        else {
+        } else {
             System.out.println("Enter your Pin");
 
             do {
@@ -106,6 +105,7 @@ public class Main {
                     }
                 }
             } else {
-        runAtmWorkflow(sc);
+            }
+        }
     }
 }
